@@ -5,13 +5,13 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class testGroupExpensesByUserId {
+public class TestGroupExpensesByUser {
 
     private StreamsTask streamsTask;
     private List<User> users;
@@ -38,19 +38,20 @@ public class testGroupExpensesByUserId {
     @Test
     public void shouldReturn2UsersByExpenses() {
         // when
-        Map<Long, List<Expense>> result = streamsTask.groupExpensesByUserId(users, expenses);
+        Map<User, List<Expense>> result = streamsTask.groupExpensesByUser(users, expenses);
 
         // then
         assertEquals(2, result.size());
     }
 
     @Test
-    public void shouldReturn3ExpensesForUserId2() {
+    public void shouldReturn3ExpensesForUser2() {
         // when
-        Map<Long, List<Expense>> result = streamsTask.groupExpensesByUserId(users, expenses);
+        Map<User, List<Expense>> result = streamsTask.groupExpensesByUser(users, expenses);
+        User user2 = new User(2L, "Dominik", 15);
 
         // then
-        assertTrue(result.containsKey(2L));
-        assertEquals(3, result.get(2L).size());
+        assertTrue(result.containsKey(user2));
+        assertEquals(3, result.get(user2).size());
     }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class testFindWomen {
+public class TestFindWomen {
 
     private StreamsTask streamsTask;
     private List<User> users;

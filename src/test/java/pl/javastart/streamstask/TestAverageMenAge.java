@@ -4,12 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class testAverageMenAge {
+public class TestAverageMenAge {
 
     private StreamsTask streamsTask;
     private List<User> users;

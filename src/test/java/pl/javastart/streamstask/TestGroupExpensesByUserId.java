@@ -8,10 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class testGroupExpensesByUser {
+public class TestGroupExpensesByUserId {
 
     private StreamsTask streamsTask;
     private List<User> users;
@@ -38,20 +37,19 @@ public class testGroupExpensesByUser {
     @Test
     public void shouldReturn2UsersByExpenses() {
         // when
-        Map<User, List<Expense>> result = streamsTask.groupExpensesByUser(users, expenses);
+        Map<Long, List<Expense>> result = streamsTask.groupExpensesByUserId(users, expenses);
 
         // then
         assertEquals(2, result.size());
     }
 
     @Test
-    public void shouldReturn3ExpensesForUser2() {
+    public void shouldReturn3ExpensesForUserId2() {
         // when
-        Map<User, List<Expense>> result = streamsTask.groupExpensesByUser(users, expenses);
-        User user2 = new User(2L, "Dominik", 15);
+        Map<Long, List<Expense>> result = streamsTask.groupExpensesByUserId(users, expenses);
 
         // then
-        assertTrue(result.containsKey(user2));
-        assertEquals(3, result.get(user2).size());
+        assertTrue(result.containsKey(2L));
+        assertEquals(3, result.get(2L).size());
     }
 }
